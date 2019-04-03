@@ -1,4 +1,4 @@
-# reMarker
+# reMarker ![icon48.png](https://github.com/gorshco/reMarker/raw/master/icons/icon48.png)
 Read full articles on Haaretz and TheMarker websites
 
 # How to install?
