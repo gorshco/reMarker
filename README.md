@@ -1,5 +1,5 @@
 # reMarker ![icon48.png](https://github.com/gorshco/reMarker/raw/master/chrome/icons/icon48.png)
-A browser extension that let's you read full articles on Haaretz and TheMarker websites
+A browser extension that lets you read full articles on Haaretz and TheMarker websites
 
 # How to install (Chrome)?
 1. [Download](https://github.com/gorshco/reMarker/releases/latest/download/reMarker-chrome.zip) and unzip reMarker.
