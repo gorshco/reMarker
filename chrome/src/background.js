@@ -1,23 +1,28 @@
 chrome.webRequest.onBeforeSendHeaders.addListener(
-    function(details) {
-        var newRefs = ['https://www.bing.com/', 'https://www.facebook.com/', 'https://www.google.com/', 'https://www.twitter.com/'];
-        var newRef = newRefs[~~(Math.random() * newRefs.length)];
-        var gotRef = false;
-        for (var i = 0; i < details.requestHeaders.length; ++i) {
-            if (details.requestHeaders[i].name == 'Referer') {
-                details.requestHeaders[i].value = newRef;
-                var gotRef = true;
+    function(request) {
+        var newUAs = [
+            'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)',
+            'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)',
+            'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+            'Twitterbot/1.0'
+        ];
+        var newUA = newUAs[~~(Math.random() * newUAs.length)];
+        var gotUA = false;
+        for (var i = 0; i < request.requestHeaders.length; ++i) {
+            if (request.requestHeaders[i].name == 'User-Agent') {
+                request.requestHeaders[i].value = newUA;
+                var gotUA = true;
                 break;
             }
         }
-        if (!gotRef) {
-            details.requestHeaders.push({
-                name: "Referer",
-                value: newRef
+        if (!gotUA) {
+            request.requestHeaders.push({
+                name: 'User-Agent',
+                value: newUA
             })
         };
         return {
-            requestHeaders: details.requestHeaders
+            requestHeaders: request.requestHeaders
         };
     }, {
         urls: ['https://www.haaretz.co.il/*', 'https://www.haaretz.com/*', 'https://www.themarker.com/*']
